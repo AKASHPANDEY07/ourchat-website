@@ -1,0 +1,24 @@
+.messagecontainer{
+    background-color: gainsboro;
+    padding: 1vh;
+    margin: 1vh;
+    border-radius: 10px;
+    display: inline-block;
+    width: 40vh;
+    clear: both;
+
+    &.right{
+        float: right;
+        background-color: crimson;
+        color: white;
+        line-break: anywhere;
+    }
+
+    &.left{
+        float: left;
+        color: white;
+        background-color: rgb(136, 228, 136);
+        line-break: anywhere;
+    }
+}
+

@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+
+  .joinpagecontainer {
+    background-color: rgb(53, 11, 11);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 5vh;
+
+    h1{
+        color: white;
+    }
+
+    .joinpageusernamecontainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+      width: 50vh;
+      border: 2px solid white;
+      gap: 5vh;
+      border-radius: 10px;
+      flex-direction: column;
+
+      h3{
+        color: white;
+      }
+
+      input[type=text]{
+        height: 4vh;
+      }
+      .loginbutton{
+        width: 20vh;
+        height: 5vh;
+        border: none;
+        background-color: rgb(207, 84, 40);
+        color: bisque;
+        cursor: pointer;
+
+        &:hover{
+            background-color: chocolate;
+        }
+      }
+    }
+  }
+}
