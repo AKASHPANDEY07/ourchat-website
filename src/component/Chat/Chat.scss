@@ -1,10 +1,11 @@
 .chatpage {
   background-color: rgb(11, 29, 29);
-  width: 100vw;
+  // width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: -18px;
 
   .chatcontainer {
     background-color: aliceblue;
@@ -25,8 +26,8 @@
       // border: 1px solid black;
       height: 66vh;
       box-sizing: border-box;
-      // overflow-y: auto;  
-      }
+      // overflow-y: auto;
+    }
 
     .inputbox {
       border-top: 1px solid black;
@@ -57,6 +58,14 @@
           background-color: rgb(235, 3, 50);
         }
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .chatpage {
+    .chatcontainer {
+      width: 90vh;
     }
   }
 }

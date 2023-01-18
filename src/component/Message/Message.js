@@ -11,7 +11,7 @@ const Message = (props) => {
           {user}: {message}
         </div>
       ) : (
-        <div className={`messagecontainer ${classs}`}>You: {message}</div>
+        <div className={`messagecontainer ${classs}`}>{user}: {message}</div>
       )}
     </>
   );

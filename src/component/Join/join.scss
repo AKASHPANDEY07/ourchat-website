@@ -3,7 +3,7 @@
   padding: 0;
 
   .joinpagecontainer {
-    background-color: rgb(53, 11, 11);
+    background-color: rgb(11, 29, 29);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -37,12 +37,12 @@
         width: 20vh;
         height: 5vh;
         border: none;
-        background-color: rgb(207, 84, 40);
+        background-color: crimson;
         color: bisque;
         cursor: pointer;
 
         &:hover{
-            background-color: chocolate;
+            background-color: rgb(110, 3, 24);
         }
       }
     }

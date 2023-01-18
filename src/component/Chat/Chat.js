@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import socketIo from 'socket.io-client';
 import ReactScrollToBottom from 'react-scroll-to-bottom';
+import { Bars } from 'react-loader-spinner';
 
 import { user } from '../Join/Join';
 import Message from '../Message/Message';
@@ -12,8 +13,9 @@ const ENDPOINT =
 let socket;
 
 const Chat = () => {
-  const [id, setId] = useState();
+  const [id, setId] = useState("");
   const [messages, setMessages] = useState([]);
+  const [loader, setLoader] = useState(true);
 
   const send = () => {
     const message = document.getElementById('chatinputbtn').value;
@@ -33,12 +35,14 @@ const Chat = () => {
 
     socket.on('welcome', (data) => {
       setMessages([...messages, data]);
-      // console.log(data);
+      setLoader(false);
+      console.log(data);
+
     });
 
     socket.on('userJoined', (data) => {
       setMessages([...messages, data]);
-      // console.log(data);
+      console.log(data);
     });
 
     socket.on('leave', (data) => {
@@ -66,31 +70,37 @@ const Chat = () => {
   return (
     <>
       <div className='chatpage'>
-        <div className='chatcontainer'>
-          <div className='header'>Welcome {user}!</div>
-          <ReactScrollToBottom className='chatbox'>
-            {messages?.map((item, index) => {
-              return (
-                <Message
-                  message={item?.message}
-                  classs={item.id === id ? 'right' : 'left'}
-                  user={item.id === id ? '' : item.user}
-                />
-              );
-            })}
-          </ReactScrollToBottom>
-          <div className='inputbox'>
-            <input
-              type='text'
-              placeholder='Enter your message'
-              id='chatinputbtn'
-            />
-            <button onClick={send} className='sendbtn'>
-              Send
-            </button>
+        {!loader ? (
+          <div className='chatcontainer'>
+            <div className='header'>Welcome {user}!</div>
+            <ReactScrollToBottom className='chatbox'>
+              {messages?.map((item, index) => {
+                return (
+                  <Message
+                    message={item?.message}
+                    classs={item.id === id ? 'right' : 'left'}
+                    user={item.id === id ? 'You' : item.user}
+                  />
+                );
+              })}
+            </ReactScrollToBottom>
+            <div className='inputbox'>
+              <input
+                type='text'
+                placeholder='Enter your message'
+                id='chatinputbtn'
+                onKeyPress={(e) => (e.key === 'Enter' ? send() : null)}
+              />
+              <button onClick={send} className='sendbtn'>
+                Send
+              </button>
+            </div>
           </div>
-        </div>
+        ) : (
+          <Bars width='200' color='#4fa94d' />
+        )}
       </div>
+      ;
     </>
   );
 };
