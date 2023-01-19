@@ -8,7 +8,7 @@ const TextToSpeech = (props) => {
   useEffect(() => {
     const synth = window.speechSynthesis;
     let utterance = new SpeechSynthesisUtterance(
-      `Welcome ${user} to ourchat App.`
+      `Welcome ${user} to our chat App.`
     );
     let speaktimeout = setTimeout(() => {
       const voicesArray = window.speechSynthesis.getVoices();
@@ -27,7 +27,7 @@ const TextToSpeech = (props) => {
       }
 
       synth.speak(utterance);
-      utterance.rate = 0.7;
+      utterance.rate = 0.4;
     }, 1000);
 
     if (!loader) window.speechSynthesis.cancel();
