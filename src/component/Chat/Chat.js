@@ -5,6 +5,7 @@ import { Bars } from 'react-loader-spinner';
 
 import { user } from '../Join/Join';
 import Message from '../Message/Message';
+import TextToSpeech from '../TextToSpeech/index';
 
 import './Chat.scss';
 
@@ -13,7 +14,7 @@ const ENDPOINT =
 let socket;
 
 const Chat = () => {
-  const [id, setId] = useState("");
+  const [id, setId] = useState('');
   const [messages, setMessages] = useState([]);
   const [loader, setLoader] = useState(true);
 
@@ -36,13 +37,12 @@ const Chat = () => {
     socket.on('welcome', (data) => {
       setMessages([...messages, data]);
       setLoader(false);
-      console.log(data);
-
+      // console.log(data);
     });
 
     socket.on('userJoined', (data) => {
       setMessages([...messages, data]);
-      console.log(data);
+      // console.log(data);
     });
 
     socket.on('leave', (data) => {
@@ -97,7 +97,10 @@ const Chat = () => {
             </div>
           </div>
         ) : (
-          <Bars width='200' color='#4fa94d' />
+          <>
+            <TextToSpeech user={user} loader={loader}/>
+            <Bars width='200' color='#4fa94d' />
+          </>
         )}
       </div>
       ;
